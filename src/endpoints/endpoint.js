@@ -56,13 +56,13 @@ route.post("/login", async (req, res) => {
     const user = await usermodel.findOne({ email: req.body.email });
 
     if (!user) {
-      return res.json("no user exists at this credentials");
+      return res.json({worning: "user does not exist"});
     }
     
     bcrypt.compare(req.body.password, user.password, async function(err, result) {
 
     if (result == false) {
-      return res.json("incorrect values");
+      return res.json({worning: "incorrect values"});
     }
 
     const authtoke = jwt.sign({ token: user._id }, process.env.JWT_SECRET, {
