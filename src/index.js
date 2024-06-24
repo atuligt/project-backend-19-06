@@ -4,8 +4,6 @@ const cors = require('cors');
 const port = process.env.PORT || 1000
 require("dotenv").config();
 
-require("./database/conn");
-
 app.use(cors({origin: "*"}));
 
 app.use(express.json());
